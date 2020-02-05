@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redis Task</title>
+    <style>
+        .del:checked + span {
+            color: red;
+        }
+        .tasklist {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <h3>Add Task</h3>
+    
+    <form method="post" action="/task/add">
+        <label for="">Add Task</label>
+        <input type="text" name="task" id="Add">
+        <input type="submit" value="Submit">
+    </form>
+    
+    <form method="post" action="/task/delete">
+        <ul class="tasklist">
+            <% tasks.forEach(function (task) { %>
+                <li>
+                    <label for="">
+                        <input type="checkbox" name="tasks" class="del" value="<%= task %>">
+                        <span>
+                            <%= task %>
+                        </span>
+                    </label>
+                </li>
+            <% }) %>
+        </ul>
+        <input type="submit" value="Remove">
+    </form>
+    
+</body>
+</html>
